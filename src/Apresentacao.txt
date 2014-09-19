@@ -1,0 +1,5 @@
+-Prós
+	
+-Contras
+	-Projeto descontinuado
+	-Codigos de status http importantes não mapeados. exemplo: 204
