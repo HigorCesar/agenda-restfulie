@@ -6,10 +6,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Agenda.Servidor.Model;
 using Agenda.Servidor.Persistencia;
+using Agenda.Servidor.Servicos;
 using Restfulie.Server.Configuration;
-using Restfulie.Server.Marshalling.Serializers.XmlAndHypermedia;
 using Restfulie.Server.MediaTypes;
-using Restfulie.Server.Unmarshalling.Deserializers.Xml;
 
 namespace Agenda.Servidor
 {
@@ -24,7 +23,7 @@ namespace Agenda.Servidor
                 "Get",
                 "{controller}/{id}",
                 new { action = "Get" },
-                new { id = @"\d+" });
+                new { id = @"\d+", httpMethod = new HttpMethodConstraint("Get") });
 
             routes.MapRoute(
                 "Post",
@@ -34,13 +33,13 @@ namespace Agenda.Servidor
 
             routes.MapRoute(
                 "Put",
-                "{controller}/",
+                "{controller}/{id}",
                 new { action = "Put" },
                 new { httpMethod = new HttpMethodConstraint("PUT") });
 
             routes.MapRoute(
                "Delete",
-               "{controller}/",
+               "{controller}/{id}",
                new { action = "Delete" },
                new { httpMethod = new HttpMethodConstraint("Delete") });
 
@@ -77,11 +76,12 @@ namespace Agenda.Servidor
             RegisterRoutes(RouteTable.Routes);
 
             var repositorioContatos = new RepositorioContatos();
-
+            var mensageiro = new Mensageiro();
             foreach (var contato in GerarContatosFalsos())
             {
                 contato.Id = Convert.ToUInt64(DateTime.Now.ToString("yyyyMMddhhmmssfff")) + (UInt64)new Random().Next(0, 120);
                 repositorioContatos.Salvar(contato);
+                mensageiro.NotificarContato(contato, "Me ligue: " + contato.Nome);
                 Thread.Sleep(1);
             }
         }

@@ -23,6 +23,7 @@ namespace Agenda.Servidor.Model
         }
 
         public Contato(string nome, string email)
+            : this()
         {
             Nome = nome;
             Email = email;
@@ -31,13 +32,18 @@ namespace Agenda.Servidor.Model
 
         }
 
+        public Contato()
+        {
+            _mensagens = new List<Mensagem>();
+        }
+
         public void SetRelations(Relations relations)
         {
             relations.Named("self").Uses<ContatosController>().Get(Id);
             relations.Named("origin").At(Rotas.Contatos());
-            relations.Named("delete").Uses<ContatosController>().Delete(Id);
+            relations.Named("delete").At(Rotas.Contato(Id));
             relations.Named("put").At(Rotas.Contato(Id));
-            relations.Named("enviarmensagem").At(Rotas.Mensagens(Id));
+            relations.Named("mensagens").At(Rotas.Mensagens(Id));
         }
 
         public void EnviarMensagem(Mensagem mensagem)
