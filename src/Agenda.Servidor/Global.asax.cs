@@ -66,6 +66,12 @@ namespace Agenda.Servidor
                 new { controller = "Contatos", action = "GetAll", id = UrlParameter.Optional } // Parameter defaults
             );
 
+            routes.MapRoute(
+             "Index",
+             "Home/Index",
+             new { action = "Index", Controller = "Home" },
+             new { httpMethod = new HttpMethodConstraint("Get") });
+
             var config = ConfigurationStore.Get();
             config.SetDefaultMediaType<JsonAndHypermedia>();
 

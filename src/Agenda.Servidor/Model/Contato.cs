@@ -43,6 +43,7 @@ namespace Agenda.Servidor.Model
             relations.Named("origin").At(Rotas.Contatos());
             relations.Named("delete").At(Rotas.Contato(Id));
             relations.Named("put").At(Rotas.Contato(Id));
+            relations.Named("post").At(Rotas.Contatos());
             relations.Named("mensagens").At(Rotas.Mensagens(Id));
         }
 

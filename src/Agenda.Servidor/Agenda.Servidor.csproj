@@ -111,18 +111,22 @@
   <ItemGroup>
     <Compile Include="Configuracoes.cs" />
     <Compile Include="Controllers\ContatosController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Contato.cs" />
     <Compile Include="Model\Mensagem.cs" />
+    <Compile Include="Model\Recursos.cs" />
     <Compile Include="Model\Telefone.cs" />
     <Compile Include="Persistencia\RepositorioContatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rotas.cs" />
     <Compile Include="Servicos\Mensageiro.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Shared\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -12,6 +12,7 @@ namespace Agenda.Servidor.Model
         {
             relations.Named("self").At(Rotas.Mensagem(Contato.Id, Identificador));
             relations.Named("origin").At(Rotas.Mensagens(Contato.Id));
+            relations.Named("post").At(Rotas.Mensagens(Contato.Id));
 
         }
     }
