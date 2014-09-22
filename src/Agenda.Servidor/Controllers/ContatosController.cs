@@ -15,8 +15,6 @@ namespace Agenda.Servidor.Controllers
         private RepositorioContatos _repositorioContatos;
         private Mensageiro _mensageiro;
 
-
-
         public ContatosController()
         {
             _repositorioContatos = new RepositorioContatos();
