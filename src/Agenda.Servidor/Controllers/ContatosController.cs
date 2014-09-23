@@ -15,14 +15,13 @@ namespace Agenda.Servidor.Controllers
         private RepositorioContatos _repositorioContatos;
         private Mensageiro _mensageiro;
 
-
-
         public ContatosController()
         {
             _repositorioContatos = new RepositorioContatos();
             _mensageiro = new Mensageiro();
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult GetAll()
         {
             return new OK(_repositorioContatos.Listar());

@@ -8,7 +8,7 @@ namespace Agenda.Servidor.Controllers
     [ActAsRestfulie]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             var recursos = new Recursos { Message = "Inicio da api", Contatos = Rotas.Contatos() };
             return new OK(recursos);
