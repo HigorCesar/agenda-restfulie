@@ -12,8 +12,8 @@ namespace Agenda.Servidor.Controllers
     [ActAsRestfulie]
     public class ContatosController : Controller
     {
-        private RepositorioContatos _repositorioContatos;
-        private Mensageiro _mensageiro;
+        private readonly RepositorioContatos _repositorioContatos;
+        private readonly Mensageiro _mensageiro;
 
         public ContatosController()
         {
