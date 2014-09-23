@@ -21,6 +21,7 @@ namespace Agenda.Servidor.Controllers
             _mensageiro = new Mensageiro();
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
         public virtual ActionResult GetAll()
         {
             return new OK(_repositorioContatos.Listar());
